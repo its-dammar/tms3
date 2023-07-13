@@ -15,18 +15,19 @@
             <div class="title py-4">
                 <h3>Login Account</h3>
             </div>
-            <form>
+            <form action="loginprocess/login.php" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                 </div>
-                <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                <button type="submit" class="btn btn-primary btn-sm" name="submit" >Submit</button>
+
                 <a name="" id="" class="btn btn-primary btn-sm" href="register.php" role="button">Sign in Account</a>
-                <a name="" id="" class="btn btn-primary btn-sm" href="home.php" role="button">Home</a>
+                <!-- <a name="" id="" class="btn btn-primary btn-sm" href="home.php" role="button">Home</a> -->
 
             </form>
         </div>

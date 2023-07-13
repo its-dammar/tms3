@@ -1,4 +1,18 @@
-<?php require("../connection/config.php"); ?>
+<?php require("../connection/config.php"); 
+session_start();
+
+
+// secure 
+if(isset($_SESSION['email'])){
+
+}
+else{
+    echo header("Location: ../index.php?msg=login_success");
+}
+
+?>
+
+
 
 <!doctype html>
 <html lang="en">

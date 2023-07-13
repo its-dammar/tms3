@@ -1,3 +1,5 @@
+
+<?php require("connection/config.php"); ?>
 <!doctype html>
 <html lang="en">
 
@@ -11,30 +13,79 @@
 <body>
 
     <section>
-        <div class="conatiner p-5 w-25 mx-auto bg-light my-5 shadow-lg ">
+        <div class="conatiner p-5 w-50 mx-auto bg-light my-5 shadow-lg ">
             <div class="title py-4">
                 <h3>Create an Account</h3>
             </div>
-            <form>
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="Phone" class="form-label">Phone</label>
-                    <input type="text" class="form-control" id="Phone" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <a name="" id="" class="btn btn-primary" href="index.php" role="button">Sign Up</a>
+            <?php
 
+            if (isset($_POST['save'])) {
+                $name = $_POST['name'];
+                $phone = $_POST['phone'];
+                $address = $_POST['address'];
+                $email = $_POST['email'];
+                $password = md5($_POST['password']);
+
+                if ($name != "" && $phone != "" && $address != "" && $email != "" && $password != "") {
+                    $submit = "INSERT INTO users (name, phone, address, email, password) 
+        VALUES ('$name','$phone','$address','$email', '$password')";
+                    $submit_result = mysqli_query($con, $submit);
+                    if ($submit_result) {
+            ?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Data are submitted</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                    <?php
+                        header("Refresh:2; url=home.php");
+                    } else {
+                    ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Data are not submitted</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                    <?php
+                        header("Refresh:2; url=register.php");
+                    }
+                } else {
+                    ?>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>All Fields are required</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+            <?php
+                    header("Refresh:2; url=register.php");
+                }
+            }
+
+            ?>
+            <form class="row" action="#" method="POST" enctype="multipart/form-data">
+                <div class="mb-3 col-lg-6 col-md-6">
+                    <label for="Name" class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" id="Name" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3 col-lg-6 col-md-6">
+                    <label for="Phone" class="form-label">Phone</label>
+                    <input type="tel" class="form-control" name="phone" id="Phone" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3 col-lg-6 col-md-6">
+                    <label for="Address" class="form-label">Address</label>
+                    <input type="text" class="form-control" name="address" id="Address" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3 col-lg-6 col-md-6">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3 col-lg-6 col-md-6">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+                </div>
+                <div class="col-lg-12">
+                    <button type="submit" class="btn btn-primary" name="save">Submit</button>
+                </div>
             </form>
         </div>
     </section>

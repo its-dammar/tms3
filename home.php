@@ -1,3 +1,17 @@
+
+<?php require("connection/config.php"); 
+session_start();
+
+
+// secure 
+if(isset($_SESSION['email'])){
+
+}
+else{
+    echo header("Location: index.php?msg=login_success");
+}
+
+?>
 <!doctype html>
 <html lang="en">
 
@@ -36,6 +50,14 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="users/index.php">Manage Users</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                               Account
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="loginprocess/logout.php">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
