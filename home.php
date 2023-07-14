@@ -87,9 +87,9 @@ else{
                     <div class="card" style="width: 18rem;">
                         <img src="https://dummyimage.com/180x120/dbdbdb/787878.png&text=Image+cap" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Users</h5>
+                            <h5 class="card-title">File Manager</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="users/index.php" class="btn btn-primary">View Users</a>
+                            <a href="filemanager/index.php" class="btn btn-primary">View Users</a>
                         </div>
                     </div>
                 </div>
